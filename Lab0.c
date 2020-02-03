@@ -6,9 +6,9 @@
 
 int DecimalConversion(int D){
    int decimal = 0, i, remainder;
-   for(i = 0, n != 0, ++i){
-      remainder = n % 10;
-      n /= 10;
+   for(i = 0, D != 0, ++i){
+      remainder = D % 10;
+      D /= 10;
       decimal += remainder * pow(2,i);
    }
    return decimal;
