@@ -14,29 +14,24 @@ int DecimalConversion(int D){
    return decimal;
 }
 
-void readFile(){
-FILE *fp;
-   char filename[100], c;
-   printf("Enter the filename to open \n");
-   scanf("%s", filename);
-
-   fp = fopen(filename, "r");
-   if(fp == NULL){
-         printf("Cant open file \n");
-            exit(0);
-
-      }
-   c = fgetc(fp);
-   while(c != EOF){
-    printf("%c",c);
-    c = fgetc(fp);
-   }
-    fclose(fp);
-
-}
-
 int main(){
-readFile();
+int num;
+   char b[255];
+   printf("Enter the files location: \nex. C:\Users\...");
+   scanf("%s", b);
+   printf("Original   ASCII   Decimal    Parity    T.ERROR\n");
+   FILE *fp = fopen(b, "r"); //reads the file 
+
+    if (fp == NULL) {
+        printf("Could not find file\n"); //cant find the file or cant open file errror
+        exit(0);
+    }
+    while (fscanf(fp, "%d", & num) == 1) { //reads data from file and includes them in parameter
+        printf("%08d ", num);
+            printf(num);
+   }
+
+  return 0;
 
 
 }
