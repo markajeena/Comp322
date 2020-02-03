@@ -1,5 +1,19 @@
 #include <stdio.h>
 #include <stdlib.h> // For exit()
+#include <math.h>
+#include <string.h>
+#define bool int
+
+int DecimalConversion(int D){
+   int decimal = 0, i, remainder;
+   for(i = 0, n != 0, ++i){
+      remainder = n % 10;
+      n /= 10;
+      decimal += remainder * pow(2,i);
+   }
+   return decimal;
+}
+
 void readFile(){
 FILE *fp;
    char filename[100], c;
