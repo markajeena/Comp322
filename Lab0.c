@@ -6,7 +6,7 @@
 
 int DecimalConversion(int D){
    int decimal = 0, i, remainder;
-   for(i = 0, D != 0, ++i){
+   for(i = 0; D != 0; ++i){
       remainder = D % 10;
       D /= 10;
       decimal += remainder * pow(2,i);
@@ -22,10 +22,17 @@ while(n){
 return parity;
 }
 
+void print(int number){
+    printf("% 8c", DecimalConversion(number));
+    printf("% 8d", DecimalConversion(number));
+    printf("% 8s", getParity(DecimalConversion(number)) ? "\todd\tTrue" : "\teven\tFalse");
+    printf("\n");
+}
+
 int main(){
 int num;
    char b[255];
-   printf("Enter the files location: \nex. C:\Users\...");
+   printf("Enter the files location: \nex. C:Users\...\n");
    scanf("%s", b);
    printf("Original   ASCII   Decimal    Parity    T.ERROR\n");
    FILE *fp = fopen(b, "r"); //reads the file 
@@ -36,7 +43,7 @@ int num;
     }
     while (fscanf(fp, "%d", & num) == 1) { //reads data from file and includes them in parameter
         printf("%08d ", num);
-            printf(num);
+            print(num);
    }
 
   return 0;
