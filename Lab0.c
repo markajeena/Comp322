@@ -13,6 +13,14 @@ int DecimalConversion(int D){
    }
    return decimal;
 }
+bool getParity(unsigned int n){
+bool parity = 0;
+while(n){
+    parity = !parity;
+    n = n & (n-1);
+}
+return parity;
+}
 
 int main(){
 int num;
