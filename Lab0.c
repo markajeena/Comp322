@@ -4,11 +4,12 @@
 #include <string.h>
 #define bool int
 
-int DecimalConversion(int D){
+int DecimalConversion(char *D){
    int decimal = 0, i, remainder;
-   for(i = 0; D != 0; ++i){
-      remainder = D % 10;
-      D /= 10;
+   int cn = atoi(D);// atoi Converts string into integer
+   for(i = 0; cn != 0; ++i){
+      remainder = cn % 10;
+      cn /= 10;
       decimal += remainder * pow(2,i);
    }
    return decimal;
@@ -22,17 +23,18 @@ while(n){
 return parity;
 }
 
-void print(int number){
-    printf("% 8c", DecimalConversion(number));
+void print(char *number){
+    printf("% 8s", number);
     printf("% 8d", DecimalConversion(number));
+    printf("% 8c", DecimalConversion(number));
     printf("% 8s", getParity(DecimalConversion(number)) ? "\todd\tTrue" : "\teven\tFalse");
     printf("\n");
 }
 
 int main(){
-int num;
-   char b[255];
-   printf("Enter the file's location: \nex. C:User:...\n");
+   char num[100];
+   char b[100000];
+   printf("Enter the file's location: \nex. C:Users:...\n");
    scanf("%s", b);
    printf("Original   ASCII   Decimal    Parity    T.ERROR\n");
    FILE *fp = fopen(b, "r"); //reads the file 
@@ -44,6 +46,7 @@ int num;
     while (fscanf(fp, "%d", & num) == 1) { //reads data from file and includes them in parameter
         printf("%08d ", num);
             print(num);
+       //something is wrong aaaaaaaaaaaaaaaaaaaaaaaaaaaaaah
    }
 
   return 0;
