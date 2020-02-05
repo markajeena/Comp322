@@ -32,7 +32,7 @@ void print(int number){
 int main(){
 int num;
    char b[255];
-   printf("Enter the files location: \nex. C:Users\...\n");
+   printf("Enter the file's location: \nex. C:User:...\n");
    scanf("%s", b);
    printf("Original   ASCII   Decimal    Parity    T.ERROR\n");
    FILE *fp = fopen(b, "r"); //reads the file 
