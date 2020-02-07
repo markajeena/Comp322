@@ -5,8 +5,8 @@
 #define bool int
 
 int DecimalConversion(char *D){
-   int decimal = 0, i, remainder;
-   int cn = atoi(D);// atoi Converts string into integer
+      int decimal = 0, i, remainder;
+      int cn = atoi(D);
    for(i = 0; cn != 0; ++i){
       remainder = cn % 10;
       cn /= 10;
@@ -15,8 +15,8 @@ int DecimalConversion(char *D){
    return decimal;
 }
 bool getParity(unsigned int n){
-bool parity = 0;
-while(n){
+   bool parity = 0;
+for(;n;){
     parity = !parity;
     n = n & (n-1);
 }
@@ -24,33 +24,37 @@ return parity;
 }
 
 void print(char *number){
-    printf("% 8s", number);
-    printf("% 8d", DecimalConversion(number));
-    printf("% 8c", DecimalConversion(number));
-    printf("% 8s", getParity(DecimalConversion(number)) ? "\todd\tTrue" : "\teven\tFalse");
-    printf("\n");
+    printf("% 8s", number);//Original
+            printf("% 8c", DecimalConversion(number));//ASCII
+                printf("% 8d", DecimalConversion(number));//Decimal
+                    printf("% 8s", getParity(DecimalConversion(number)) ? "\todd" : "\teven");// Parity
+    printf("\n");//:)
 }
 
-int main(){
-   char num[100];
-   char b[100000];
-   printf("Enter the file's location: \nex. C:Users:...\n");
+int main(int argc, char** argv){
+      char num[100];
+      char b[100000];
+   printf("Enter the file's location:\n");
    scanf("%s", b);
-   printf("Original   ASCII   Decimal    Parity    T.ERROR\n");
-   FILE *fp = fopen(b, "r"); //reads the file 
+      printf("Original   ASCII   Decimal     Parity\n");
+      printf("-------------------------------------\n");
+   FILE *fp = fopen(b, "r"); //reads the file
 
     if (fp == NULL) {
-        printf("Could not find file\n"); //cant find the file or cant open file errror
+        printf("Could not find file\n"); //cant find the file or cant open file error
         exit(0);
     }
-    while (fscanf(fp, "%d", & num) == 1) { //reads data from file and includes them in parameter
-        printf("%08d ", num);
-            print(num);
-       //something is wrong aaaaaaaaaaaaaaaaaaaaaaaaaaaaaah
-   }
-
+    while (fscanf(fp, "%s", & num) == 1) {//reads data from file and includes them in parameter
+          char buff[9];
+          int d;
+        snprintf(buff, 9, "%s", num);
+        d = strlen(buff);
+          int i = d;
+        while ( i < 8) {
+            buff[i] = '0';
+            i++;
+        }
+        print(buff);
+    }
   return 0;
-
-
 }
-© 2020 GitHub, Inc.
