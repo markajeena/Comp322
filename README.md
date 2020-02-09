@@ -6,6 +6,8 @@ Status: Complete
 Recent Updates: Fix in paramter pointers and added a print line, fixed also my binary to decimal conversion.
 at the moment: working on how to print it out properly and also checking all numbers to see if they work and print as they should.
 
+Note to viewers: I accidentelly messed up the history of my code, so I wrote the log of what I did under this note.
+
 Work:
 (Start)Feb. 01, 2020
 Start a respitory. Creation of Lab0.c
