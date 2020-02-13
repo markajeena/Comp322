@@ -36,6 +36,9 @@ changes of done to the parameters.
 Feb. 07, 2020
 1.Made final changes to the print out line, now the code works perfectly.
 
-(End)Feb. 08, 2020
+Feb. 08, 2020
 Added makefile and my test file of text.
+
+Feb.13,2020
+Began fixing the code to fit the assignments criteria, alot of changes to come.
 
