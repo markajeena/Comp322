@@ -43,6 +43,20 @@ void unprintables(int number) {
     }
 }
 
+int DC(char *num) { //Convert from binary to decimal
+    char T[9];
+    memcpy(T, num, sizeof T);
+    T[0] = '0';
+    int decimal = 0, i, remain;
+    int cn = atoi(T); //atoi converts char to int
+    for (i = 0; cn != 0; ++i) {
+        remain = cn % 10;
+        cn /= 10;
+        decimal += remain * pow(2, i);
+
+    }
+    return decimal;
+}
 
 int DecimalConversion(char *D){
       int decimal = 0, i, remainder;
@@ -63,12 +77,34 @@ for(;n;){
 return parity;
 }
 
-void print(char *number){
-    printf("% 8s", number);//Original
-            printf("% 8c", DecimalConversion(number));//ASCII
-                printf("% 8d", DecimalConversion(number));//Decimal
-                    printf("% 8s", getParity(DecimalConversion(number)) ? "\todd" : "\teven");// Parity
-    printf("\n");//:)
+int holder(char *number) {
+    int count = 0;
+    char T[9];
+    memcpy(T, number, sizeof T);
+    for (int i = 0; i < 8; i++) {
+        if (T[i] == '0' || T[i] == '1') {
+
+        } else {
+            count++;
+        }
+    }
+    return count;
+}
+
+void print(char *number) {
+    if (holder(number) != 0){
+        system("clear");
+        printf("The data contained a char that was not 0 or 1");
+        exit(0);
+    }
+    //printf("%08s", number);
+    int dec;
+    printf("% 8s", number);
+        printf("% 8d", DC(number));
+    dec = DC(number);
+    unprintables(dec);
+        printf("% 8s", getParity(DecimalConversion(number)) ? "odd" : "even");
+            printf("\n");
 }
 
 int main(int argc, char** argv){
