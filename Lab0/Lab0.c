@@ -138,24 +138,41 @@ int main(int argc, char** argv){
             token = strtok(NULL, special);//split string into tokens
             }
 
-    } 
-    /*
-    if (fp == NULL) {
-        printf("Could not find file\n"); //cant find the file or cant open file error
-        exit(0);
-    }
-    while (fscanf(fp, "%s", & num) == 1) {//reads data from file and includes them in parameter
-          char buff[9];
-          int d;
-        snprintf(buff, 9, "%s", num);
-        d = strlen(buff);
-          int i = d;
-        while ( i < 8) {
-            buff[i] = '0';
+    } else if (strcmp(argv[1], ("-")) == 0) {//checks for first -
+        int i = 2;
+        while(i < argc) {
+            char buffer[9];
+            int digits;
+            snprintf(buffer, 9, "%s", argv[i]);
+            digits = strlen(buffer);    //string length
+            for (int m = digits; m < 8; m++) {
+                buffer[m] = '0';
+            }
+            print(buffer);
             i++;
         }
-        print(buff);
+
+    } else {
+
+        int i = 1;
+        while(i < argc){//normal input
+            char buffer[9];
+            int digits;
+            snprintf(buffer, 9, "%s", argv[i]);
+            digits = strlen(buffer);    //string length
+            for (int m = digits; m < 8; m++) {
+                buffer[m] = '0';
+            }
+            print(buffer);
+            i++;
+        }
+
+
+
+
     }
-    */
-  return 0;
+
+
+    return 0;
 }
+
