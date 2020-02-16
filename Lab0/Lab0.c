@@ -117,6 +117,28 @@ int main(int argc, char** argv){
     const char special[2] = " ";
     printf("Original   ASCII   Decimal     Parity\n");
     printf("-------------------------------------\n");
+    if (argc == 2 && strcmp(argv[1], ("-")) != 0) { //checks for -
+        FILE *fp = fopen(argv[1], "r"); //open file, read
+        if (fp == NULL) { //error if no file found
+            printf("no file found\n");
+            exit(-1);
+        }
+        read = getline(&line, &len, fp);
+        token = strtok(line, special);//split string --> token
+
+        while (token != NULL) {
+            char buffer[9];
+            snprintf(buffer, 9, "%s", token);
+            int digits = strlen(buffer);
+            for (int i = digits; i < 8; i++) {
+                buffer[i] = '0';
+            }
+
+            print(buffer);
+            token = strtok(NULL, special);//split string into tokens
+            }
+
+    } 
     /*
     if (fp == NULL) {
         printf("Could not find file\n"); //cant find the file or cant open file error
