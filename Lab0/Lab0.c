@@ -108,14 +108,16 @@ void print(char *number) {
 }
 
 int main(int argc, char** argv){
-      char num[100];
-      char b[100000];
-   printf("Enter the file's location:\n");
-   scanf("%s", b);
-      printf("Original   ASCII   Decimal     Parity\n");
-      printf("-------------------------------------\n");
-   FILE *fp = fopen(b, "r"); //reads the file
-
+//char number[20];
+//char tempL[10000];
+    char* line = NULL;
+    size_t len = 0;
+    ssize_t read;
+    char *token;
+    const char special[2] = " ";
+    printf("Original   ASCII   Decimal     Parity\n");
+    printf("-------------------------------------\n");
+    /*
     if (fp == NULL) {
         printf("Could not find file\n"); //cant find the file or cant open file error
         exit(0);
@@ -132,5 +134,6 @@ int main(int argc, char** argv){
         }
         print(buff);
     }
+    */
   return 0;
 }
