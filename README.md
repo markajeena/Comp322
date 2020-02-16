@@ -39,6 +39,17 @@ Feb. 07, 2020
 Feb. 08, 2020
 Added makefile and my test file of text.
 
-Feb.13,2020
-Began fixing the code to fit the assignments criteria, alot of changes to come.
+(Extended Days)
+Feb. 09, 2020 
+Realize I need to changes but dont know how to.
 
+Feb. 13, 2020
+Prof. gave clear instructions on how the lab should print out, I've began to work on the code but
+havent pushed anything to github.
+
+Feb. 15, 2020
+Pushed alot of things like the unprintable method, holder, and fixed my printout to fit professors 
+critera.
+
+Feb. 15, 2020 (10:45pm) - end
+finishing touches, fixing the makefile, and adding input file. 
