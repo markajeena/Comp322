@@ -1,3 +1,6 @@
+/*Mark Ajina COMP 322 
+Lab1 - time 4 baby and me */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
