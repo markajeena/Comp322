@@ -7,16 +7,21 @@ Lab 2 - Launch Tube */
 #include <stdlib.h>
 #include <time.h>
 #include <sys/types.h>
-#include <sys/times.h>
+#include <sys/wait.h>
 #include <unistd.h>
 
 int main(){
+      int stats;
+      cpid = fork();
+      
 if(cpid == 0){
+      
       printf("PPID: %d, ", getppid());//parent process ID
          printf("PID: %d\n", getpid());//childs process ID
    return 0;
+      
    }else if(cpid > 0){ //checks if in parent
-
+      waitpid(child, &curr, WUNTRACED);
    times(&end_tms);
 
    }
