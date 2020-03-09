@@ -10,7 +10,7 @@ Lab 2 - Launch Tube */
 #include <unistd.h>
 
 int main(int argc, char** argv){
-      int stats;
+      int curr;
      pid_t cpid = fork();
       
       if(argc <= 1){
@@ -24,8 +24,8 @@ if(cpid == 0){
    return 0;
       
    }else if(cpid > 0){ //checks if in parent
-      waitpid(child, &curr, WUNTRACED);
-   times(&end_tms);
+      waitpid(cpid, &curr, WUNTRACED);
+   //times(&end_tms);
 
    }
 
