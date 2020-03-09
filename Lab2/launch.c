@@ -9,9 +9,13 @@ Lab 2 - Launch Tube */
 #include <sys/wait.h>
 #include <unistd.h>
 
-int main(){
+int main(int argc, char** argv){
       int stats;
-      cpid = fork();
+     pid_t cpid = fork();
+      
+      if(argc <= 1){
+       exit(EXIT_FAILURE);     
+      }
       
 if(cpid == 0){
       
