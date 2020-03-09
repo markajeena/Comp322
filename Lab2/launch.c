@@ -4,6 +4,11 @@ End date -
 Lab 2 - Launch Tube */
 
 #include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#include <sys/types.h>
+#include <sys/times.h>
+#include <unistd.h>
 
 int main(){
 if(cpid == 0){
@@ -11,9 +16,6 @@ if(cpid == 0){
          printf("PID: %d\n", getpid());//childs process ID
    return 0;
    }else if(cpid > 0){ //checks if in parent
-   wait = waitpid(cpid, &status, WUNTRACED);//waits for child to finish
-
-   printf("PPID: %d, PID: %d, CPID: %d, RETVAL: %d\n", getppid(), getpid(), wait, status);
 
    times(&end_tms);
 
