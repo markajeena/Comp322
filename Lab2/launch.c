@@ -1,4 +1,4 @@
-/*Mark Ajina
+;/*Mark Ajina
 Start date - 03/03/2020 
 End date - 
 Lab 2 - Launch Tube */
@@ -11,12 +11,13 @@ Lab 2 - Launch Tube */
 
 int main(int argc, char** argv){
       int curr;
-     pid_t cpid = fork();
+     pid_t cpid;
       
       if(argc <= 1){
+            fprintf(stderr, "ERROR: USAGE: %s NEEDS MORE ARGS\n", argv[0]);
        exit(EXIT_FAILURE);     
       }
-      
+      cpid = fork();
 if(cpid == 0){
       
       printf("PPID: %d, ", getppid());//parent process ID
@@ -24,8 +25,9 @@ if(cpid == 0){
    return 0;
       
    }else if(cpid > 0){ //checks if in parent
+      fprintf(stderr, "%s: $$ = %d\n", argv[1], getpid());
       waitpid(cpid, &curr, WUNTRACED);
-   //times(&end_tms);
+      fprintf(stderr, "%s: $? = %d\n", argv[1],curr);
 
    }
 
