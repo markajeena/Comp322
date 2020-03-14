@@ -32,20 +32,20 @@ int main(int argc, char** argv){
       if(argc <= 1){
             fprintf(stderr, "ERROR: USAGE: %s NEEDS MORE ARGS\n", argv[0]);
        exit(EXIT_FAILURE);     
-            for(int i = 0; i < argc; i++)
-                  free(argv[i]);
+            
       }
       
 if(cpid == 0){
-      
-      printf("PPID: %d, ", getppid());//parent process ID
-         printf("PID: %d\n", getpid());//childs process ID
-   return 0;
+      if(argc < 2){
+            pintf("ERROR, Please input filename\n");
+      }
       
    }else if(cpid > 0){ //checks if in parent
-      fprintf(stderr, "%s: $$ = %d\n", argv[1], getpid());
+      fprintf(stderr, "CPID: %d\n", argv[1], getpid());
       waitpid(cpid, &curr, 0);
-      fprintf(stderr, "%s: $? = %d\n", argv[1],curr);
+      fprintf(stderr, "RETEVAL: %d\n", argv[1],curr);
+      for(int i = 0; i < argc; i++)
+                  free(argv[i]);
 
    }
 
