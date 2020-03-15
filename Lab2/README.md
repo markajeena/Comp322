@@ -9,3 +9,7 @@
 03/15/2020 
  
  finishing Launch, and trying to finish tube.c and trying to make the makefile work properly and neatly according to the instructions of the lab.
+
+03/16/2020
+
+finishing tube.c and finalizing the makefile.
