@@ -41,7 +41,7 @@ if(cpid == 0){
             
       }
       else{
-            execve(flocation, args,null);
+            execve(flocate, args,null);
       }
 }
       
