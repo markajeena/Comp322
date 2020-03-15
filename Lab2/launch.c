@@ -37,16 +37,22 @@ int main(int argc, char** argv){
       
 if(cpid == 0){
       if(argc < 2){
-            pintf("ERROR, Please input filename\n");
+            printf("ERROR, Please input filename\n");
+            
       }
+      else{
+            execve(flocation, args,null);
+      }
+}
       
    }else if(cpid > 0){ //checks if in parent
       fprintf(stderr, "CPID: %d\n", argv[1], getpid());
       waitpid(cpid, &curr, 0);
       fprintf(stderr, "RETEVAL: %d\n", argv[1],curr);
-      for(int i = 0; i < argc; i++)
-                  free(argv[i]);
-
+      for(int i = 0; i < argc; i++){
+                  free(args[i]);
+      }
+      free(args)
    }
 
    //if fork fails
