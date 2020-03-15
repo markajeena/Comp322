@@ -41,7 +41,7 @@ if(cpid == 0){
             
       }
       else{
-            execve(flocate, args,null);
+            execve(flocate, args, NULL);
       }
 }
       
