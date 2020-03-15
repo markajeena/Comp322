@@ -46,13 +46,13 @@ if(cpid == 0){
 }
       
    }else if(cpid > 0){ //checks if in parent
-      fprintf(stderr, "CPID: %d\n", argv[1], getpid());
+      fprintf(stderr, "CPID: %d\n", getpid());
       waitpid(cpid, &curr, 0);
-      fprintf(stderr, "RETEVAL: %d\n", argv[1],curr);
+      fprintf(stderr, "RETEVAL: %d\n", curr);
       for(int i = 0; i < argc; i++){
                   free(args[i]);
       }
-      free(args)
+      free(args);
    }
 
    //if fork fails
