@@ -4,8 +4,10 @@
 #include <sys/wait.h>
 #include <unistd.h>
 
-int main(int argc, char *argv[])
-{
+#define WRITE_END 1
+#define READ_END 0
+
+int main(int argc, char *argv[]){
 	//storage vars
 	pid_t cpid1, cpid2;
 	int pipefd[2];
@@ -14,7 +16,7 @@ int main(int argc, char *argv[])
     char* buff1[100], buff2[100];
 
     if(argc <= 3){
-        fprintf(stderr, "ERROR: USAGE: %s Not Enuf args\n", argv[0]);
+        fprintf(stderr, "ERROR: USAGE: %s Not enough args\n", argv[0]);
         exit(EXIT_FAILURE);
     }else{
     //make_buffers(argv, argc, buff_1, buff_2);
