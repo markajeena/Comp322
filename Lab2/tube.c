@@ -115,7 +115,7 @@ int main(int argc, char *argv[]){
 		else if(cpid2 == 0 && cpid1 > 0){	//parent process
 			dup2(pipefd[READ_END], READ_END);	//cpid1 process prints into the pipe, doesn't matter for race condition
 			//order printed correctly to ensure no race condition issues
-			close(pipefd[READ_END]);
+			close(pipefd[WRITE_END]);
 			read(pipefd[READ_END], args2, sizeof(args2));
 			close(pipefd[READ_END]);
 
