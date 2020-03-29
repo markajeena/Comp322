@@ -13,7 +13,6 @@ int main(int argc, char *argv[]){
 	int pipefd[2];
     int arg1len = 0, arg2len = 0;
 	int status1, status2;
-    char* buff1[100], buff2[100];
 
     if(argc <= 3){
         fprintf(stderr, "ERROR: USAGE: %s Not enough args\n", argv[0]);
