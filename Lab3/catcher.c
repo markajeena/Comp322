@@ -13,20 +13,37 @@ static char* SIGS[27] = {"HUP", "INT", "QUIT", "ILL", "TRAP",
                          "STKFLT", "CHLD", "CONT", "STOP", "TSTP",
                          "TTIN", "TTOUT", "URG", "XCPU", "XFSZ",
                          "VTALRM", "PROF", "WINCH"};
-void sigHandle(int signal);
+
+void sigCatch(int n) {
+    time_t sec;
+    time(&sec);
+
+    if(n == 15) {
+        terminate++;
+    }else {
+        terminate = 0;
+    }
+}
 
 void sigHandle(int sig){
-	signal(sig, sigHandle);
+    for(int i = 1; i < argc; i++) {
+        for(int j = 0; j < 27; j++) {
+  
+            if(strcmp(argv[i], "USR1")) {
+            }
+		
+            if(strcmp(argv[i], "USR2")) {
+		
+	    }else {
 
-	printf("SIG%s caught at %ld\n", str_arr[sig - 1], time(NULL));
-
-	counter++;
+            }
+        }
+    }
 //if the signal is counter
-	if(sig == terminate)
-	{
-		terminate++;
-
+	while(terminate < 3){
+		pause();
 	}
+	fprintf(stderr, "catcher: Total signals count = %d\n", counter);
 }
 
 int main(int argc, char** argv){
