@@ -13,7 +13,21 @@ static char* SIGS[27] = {"HUP", "INT", "QUIT", "ILL", "TRAP",
                          "STKFLT", "CHLD", "CONT", "STOP", "TSTP",
                          "TTIN", "TTOUT", "URG", "XCPU", "XFSZ",
                          "VTALRM", "PROF", "WINCH"};
+void sigHandle(int signal);
 
+void sigHandle(int sig){
+	signal(sig, sigHandle);
+
+	printf("SIG%s caught at %ld\n", str_arr[sig - 1], time(NULL));
+
+	counter++;
+//if the signal is counter
+	if(sig == terminate)
+	{
+		terminate++;
+
+	}
+}
 
 int main(int argc, char** argv){
 //local variables
