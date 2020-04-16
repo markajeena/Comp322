@@ -5,8 +5,8 @@
 #include <string.h>
 
 //Declare global variables
-static int terminateSig;
-static int counter;
+static int terminate = 0;
+static int counter = 0;
 static char* SIGS[27] = {"HUP", "INT", "QUIT", "ILL", "TRAP",
                          "ABRT", "BUS", "FPE", "KILL", "USR1",
                          "SEGV", "USR2", "PIPE", "ALRM", "TERM", 
