@@ -39,17 +39,18 @@ void sigCatch(int n) {
     counter++;
 }
 
-void sigHandle(int sig){
+void sigHandle(int argc, char** argv){
     for(int i = 1; i < argc; i++) {
         for(int j = 0; j < 27; j++) {
   
             if(strcmp(argv[i], "USR1")) {
+		signal(SIGUSR1, sigCatch);
             }
 		
             if(strcmp(argv[i], "USR2")) {
-		
+		signal(SIGUSR2, sigCatch);
 	    }else {
-
+		signal(j+1, sigCatch);
             }
         }
     }
@@ -61,10 +62,8 @@ void sigHandle(int sig){
 }
 
 int main(int argc, char** argv){
-//local variables
-int catcher;
-  fprintf(stderr, "%s $$; %d\n"", argv[0], getpid());
- 
+  	fprintf(stderr, "%s $$: %d\n", argv[0], pid);
+ 	sigHandle(argc, argv);
         
           return 0;
 }
