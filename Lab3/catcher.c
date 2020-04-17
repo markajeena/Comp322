@@ -15,14 +15,28 @@ static char* SIGS[27] = {"HUP", "INT", "QUIT", "ILL", "TRAP",
                          "VTALRM", "PROF", "WINCH"};
 
 void sigCatch(int n) {
+//this method checks if the number is the same as USR1 and/or 2
+//then prints out what time it has been caught and signal
     time_t sec;
     time(&sec);
 
     if(n == 15) {
         terminate++;
-    }else {
+    }else{
         terminate = 0;
     }
+	
+    if(n == SIGUSR1) {
+        fprintf(stdout, "SIGUSR1 caught at %ld\n", sec);
+	    
+    } else if(n == SIGUSR2) {
+        fprintf(stdout, "SIGUSR2 caught at %ld\n", sec);
+	    
+    }else {
+        
+        fprintf(stdout, "SIG%s caught at %ld\n", SIGS[n-1], sec);
+    }
+    counter++;
 }
 
 void sigHandle(int sig){
