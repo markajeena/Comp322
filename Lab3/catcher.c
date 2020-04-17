@@ -61,9 +61,13 @@ void sigHandle(int argc, char** argv){
 	fprintf(stderr, "catcher: Total signals count = %d\n", counter);
 }
 
+void PID(int pid){
+	fprintf(stderr, "catcher: $$ = %d\n", pid);
+		}
+
 int main(int argc, char** argv){
-  	fprintf(stderr, "%s $$: %d\n", argv[0], pid);
- 	sigHandle(argc, argv);
+  	PID(getpid());
+	sigHandle(argc, argv);
         
           return 0;
 }
