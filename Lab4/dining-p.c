@@ -21,7 +21,7 @@ void think(int num){
 
 int main (int argc, char **argv) {
 
-  returnVal = sem_open(SEM_FILE1, O_CREAT|O_EXCL, 0666, 1);
+  /*returnVal = sem_open(SEM_FILE1, O_CREAT|O_EXCL, 0666, 1);
   if (returnVal == SEM_FAILED ) {
     perror(NULL);
     returnVal = sem_open(SEM_FILE1, 0);
@@ -30,8 +30,10 @@ int main (int argc, char **argv) {
   chopstick[1] = returnVal;
 
   sleep(1);
-  sem_close(chopstick[1]);
   sem_unlink(SEM_FILE1);
+  */
 }
 
-
+void closeSem(){
+ sem_close(chop[1]); 
+}
