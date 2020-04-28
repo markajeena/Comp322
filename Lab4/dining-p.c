@@ -7,12 +7,17 @@
 #include <string.h>
 
 
-#define SEM_FILE1  "/bensonite_chopstick_1A"
-#define SEM_FILE2  "/bensonite_chopstick_2"
+#define chop1  //"chopstick1"
+#define chop2  //"chopstick2"
+sem_t* right;
+sem_t* left;
 
 
-sem_t * returnVal;
-sem_t * chopstick[3];
+void eat(int num){
+}
+
+void think(int num){
+}
 
 int main (int argc, char **argv) {
 
@@ -28,4 +33,5 @@ int main (int argc, char **argv) {
   sem_close(chopstick[1]);
   sem_unlink(SEM_FILE1);
 }
+
 
