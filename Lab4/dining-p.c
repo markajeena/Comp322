@@ -35,5 +35,6 @@ int main (int argc, char **argv) {
 }
 
 void closeSem(){
- sem_close(chop[1]); 
+ sem_close(chop1); 
+ sem_unlink(right); 
 }
