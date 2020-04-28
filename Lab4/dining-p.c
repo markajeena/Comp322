@@ -4,6 +4,8 @@
 #include <unistd.h>
 #include <stdio.h>
 #include <errno.h>
+#include <string.h>
+
 
 #define SEM_FILE1  "/bensonite_chopstick_1A"
 #define SEM_FILE2  "/bensonite_chopstick_2"
@@ -12,7 +14,7 @@
 sem_t * returnVal;
 sem_t * chopstick[3];
 
-main () {
+int main (int argc, char **argv) {
 
   returnVal = sem_open(SEM_FILE1, O_CREAT|O_EXCL, 0666, 1);
   if (returnVal == SEM_FAILED ) {
