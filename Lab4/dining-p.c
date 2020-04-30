@@ -1,3 +1,10 @@
+/*
+Mark Ajina
+Lab4: Rice Rice and Rice
+Comp322
+
+*/
+
 #include <fcntl.h>           /* For O_* constants */
 #include <sys/stat.h>        /* For mode constants */
 #include <semaphore.h>
