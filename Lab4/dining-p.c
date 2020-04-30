@@ -34,9 +34,12 @@ void think(int num){
 
 
 int main (int argc, char **argv) {
-int cycles = 0;
-int position = 0;
-int seats = 0;
+	int cycles = 0;
+	int position = atoi(argv[2]);
+	int seats = atoi(argv[1]);
+   if(position > seats){
+	printf("Error: not enough seats\n");	   
+   }
   /*returnVal = sem_open(SEM_FILE1, O_CREAT|O_EXCL, 0666, 1);
   if (returnVal == SEM_FAILED ) {
     perror(NULL);
