@@ -19,7 +19,7 @@ Comp322
 sem_t* right;
 sem_t* left;
 
-
+int end;
 
 void eat(int num){
 	fprintf(stdout, "Philosopher #%d is eating\n", num);
@@ -52,4 +52,8 @@ void signalHandler(int num){
 	printf("SIGTERM(%d) processed\n", num);
  //sem_close(chop1); 
  //sem_unlink(right); 
+}
+
+void dine(int argc, char** argv){
+
 }
