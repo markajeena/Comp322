@@ -40,7 +40,7 @@ int main (int argc, char **argv) {
   */
 }
 
-void closeSem(){
+void signalHandler(){
  sem_close(chop1); 
  sem_unlink(right); 
 }
