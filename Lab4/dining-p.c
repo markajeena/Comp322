@@ -14,10 +14,16 @@ sem_t* left;
 
 
 void eat(int num){
+	fprintf(stdout, "Philosopher #%d is eating\n", num);
+  usleep(rand());
 }
 
+
 void think(int num){
+	fprintf(stdout, "Philosopher #%d is eating\n", phil);
+	usleep(rand());
 }
+
 
 int main (int argc, char **argv) {
 
