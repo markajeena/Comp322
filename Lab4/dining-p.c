@@ -55,5 +55,7 @@ void signalHandler(int num){
 }
 
 void dine(int argc, char** argv){
-
+int cycles = 0;
+int position = 0;
+int seats = 0;
 }
