@@ -40,7 +40,8 @@ int main (int argc, char **argv) {
   */
 }
 
-void signalHandler(){
- sem_close(chop1); 
- sem_unlink(right); 
+void signalHandler(int num){
+	sig(num);
+ //sem_close(chop1); 
+ //sem_unlink(right); 
 }
