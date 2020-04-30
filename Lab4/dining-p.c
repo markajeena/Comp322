@@ -13,6 +13,7 @@ sem_t* right;
 sem_t* left;
 
 
+
 void eat(int num){
 	fprintf(stdout, "Philosopher #%d is eating\n", num);
   usleep(rand());
@@ -41,7 +42,7 @@ int main (int argc, char **argv) {
 }
 
 void signalHandler(int num){
-	sig(num);
+	printf("SIGTERM(%d) processed\n", num);
  //sem_close(chop1); 
  //sem_unlink(right); 
 }
