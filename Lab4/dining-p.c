@@ -80,3 +80,14 @@ void dining(int argc, char** argv){
 	 }
     }
 	    
+void deallocate(){
+	//close right and left
+	sem_close(right);
+	sem_close(left);
+	//unlink
+	sem_unlink(chop1);
+	sem_unlink(chop2);
+	//deallocate both side
+	sem_destroy(left);
+	sem_destroy(right);
+}
