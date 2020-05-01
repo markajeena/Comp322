@@ -34,12 +34,7 @@ void think(int num){
 
 
 int main (int argc, char **argv) {
-	int cycles = 0;
-	int position = atoi(argv[2]);
-	int seats = atoi(argv[1]);
-   if(position > seats){
-	printf("Error: not enough seats\n");	   
-   }
+	dining(argc,argv);
   /*returnVal = sem_open(SEM_FILE1, O_CREAT|O_EXCL, 0666, 1);
   if (returnVal == SEM_FAILED ) {
     perror(NULL);
@@ -62,3 +57,22 @@ void signalHandler(int num){
 void dine(int argc, char** argv){
 
 }
+
+void dining(int argc, char** argv){
+    if(argc == 3) {
+        int seats = atoi(argv[1]);
+        int position = atoi(argv[2]);
+       	 if(seats < position) {
+          	  printf("Error: not enough seats\n");
+         }else{
+		int cycle = 0;
+			do{
+			sem_wait();
+			eat(1);
+			think(position);
+			}while(end == 1);
+	 }else{
+		 printf("Error\n");
+	 }
+    }
+	    
