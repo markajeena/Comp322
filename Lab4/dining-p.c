@@ -2,7 +2,6 @@
 Mark Ajina
 Lab4: Rice Rice and Rice
 Comp322
-
 */
 
 #include <fcntl.h>           /* For O_* constants */
@@ -42,9 +41,7 @@ int main (int argc, char **argv) {
     perror(NULL);
     returnVal = sem_open(SEM_FILE1, 0);
   }
-
   chopstick[1] = returnVal;
-
   sleep(1);
   sem_unlink(SEM_FILE1);
   */
@@ -83,6 +80,7 @@ void dining(int argc, char** argv){
 		 printf("Error\n");
 	 }
     }
+}
 	    
 void deallocate(){
 	//close right and left
