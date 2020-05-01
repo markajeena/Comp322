@@ -62,11 +62,17 @@ void dining(int argc, char** argv){
           	  printf("Error: not enough seats\n");
          }else{
 		int cycle = 0;
+		signal(SIGTERM, 1);
+		right = sem_open(chop1, O_CREAT,0660, 1);
+		left = sem_open(chop2, O_CREAT,0660, 1);
 			do{
-			right = sem_open(chop1, O_CREAT,0660, 1);
-			left = sem_open(chop2, O_CREAT,0660, 1);
-			sem_wait();
-			eat(1);
+		//wait for right & left semaphore
+			sem_wait(right);
+			sem_wait(left);	
+			eat(position);
+		//show left & right are available
+			sem_post(right);
+			sem_post(left);		
 			think(position);
 			}while(end == 1);
 	 }else{
