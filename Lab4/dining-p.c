@@ -7,12 +7,14 @@ Comp322
 
 #include <fcntl.h>           /* For O_* constants */
 #include <sys/stat.h>        /* For mode constants */
-#include <semaphore.h>
-#include <unistd.h>
 #include <stdio.h>
+#include <unistd.h>
+#include <stdlib.h>
 #include <errno.h>
 #include <string.h>
-
+#include <semaphore.h>
+#include <sys/mman.h>
+#include <signal.h>
 
 #define chop1  //"chopstick1"
 #define chop2  //"chopstick2"
