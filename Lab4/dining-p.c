@@ -19,7 +19,7 @@ Comp322
 sem_t* right;
 sem_t* left;
 
-int end;
+static int end;
 
 void eat(int num){
 	fprintf(stdout, "Philosopher #%d is eating\n", num);
@@ -50,6 +50,7 @@ int main (int argc, char **argv) {
 
 void signalHandler(int num){
 	printf("SIGTERM(%d) processed\n", num);
+	end = 1;
  //sem_close(chop1); 
  //sem_unlink(right); 
 }
@@ -62,7 +63,7 @@ void dining(int argc, char** argv){
           	  printf("Error: not enough seats\n");
          }else{
 		int cycle = 0;
-		signal(SIGTERM, 1);
+		signal(SIGTERM, sigHandler);
 		right = sem_open(chop1, O_CREAT,0660, 1);
 		left = sem_open(chop2, O_CREAT,0660, 1);
 			do{
@@ -74,7 +75,8 @@ void dining(int argc, char** argv){
 			sem_post(right);
 			sem_post(left);		
 			think(position);
-			}while(end == 1);
+			cycle++;
+			}while(end == sigHandler);
 	 }else{
 		 printf("Error\n");
 	 }
