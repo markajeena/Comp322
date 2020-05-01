@@ -1,8 +1,7 @@
 #Mark Ajina
 #LAB4: Rice Rice and Rice
-EXECUTABLES is a Make Variable (similar to an environment variable) that lists all the
-# "executables" associated with the lab. 
-EXECUTABLES = dining-p.c
+
+EXECUTABLES = dining-p
 SRC = dining-p.c
 OBJ = dining-p.o
 
@@ -15,14 +14,16 @@ CFLAGS = -g -Wall -Wextra
 # be created. I.e., all the executables
 all: $(EXECUTABLES)
 
+dining-p: $(EXECUTABLES)
+
 # On the following lines (which _must_ start with a tab), are the commands I need to type -- 
 # each time my source file is modified.
-$(EXECUTABLES): 
-	$(CC) $(CFLAGS) -c $(SRC) $(CFLAGS)
-	$(CC) $(CFLAGS) -o $(EXECUTABLES) $(OBJ)
+$(EXECUTABLES): $(SRC)
+	$(CC) $(CFLAGS) -lpthread -c $(SRC)
+	$(CC) $(CFLAGS) -lpthread -o $@ $(OBJ)
 
-
-# CLEANS of all Executables and OBJ
+# By convention, I always have a target called
+# "clean" that I used to define all temporary
 # or intermediates.
 clean:
 	rm -f $(EXECUTABLES) $(OBJ) *~
