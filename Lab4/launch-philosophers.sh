@@ -7,4 +7,7 @@ exit 1;
 
 fi
 
+program: ./dining-p
+seats =$1
+position = $2
 
