@@ -2,6 +2,7 @@
 Mark Ajina
 Lab4: Rice Rice and Rice
 Comp322
+Description: a program that runs numerous times to show the use of semaphores
 */
 
 #include <fcntl.h>           /* For O_* constants */
