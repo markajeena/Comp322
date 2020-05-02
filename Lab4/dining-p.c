@@ -29,7 +29,7 @@ void eat(int num){
 
 
 void think(int num){
-	fprintf(stdout, "Philosopher #%d is eating\n", num);
+	fprintf(stdout, "Philosopher #%d is thinking\n", num);
 	usleep(rand());
 }
 
@@ -75,11 +75,18 @@ void dining(int argc, char** argv){
 			sem_post(left);		
 			think(position);
 			cycle++;
-			}while(end == sigHandler);
+			}while(end == sigHandler());
+		 if(sigHandler() != 1)
+			  fprintf(stderr,"Philosopher #%d completed %d cycles.\n", position, cycle);
+		 }
+	 
+		 deallocate();
+	 }
 	 }else{
-		 printf("Error\n");
+		printf("Error\n);
 	 }
     }
+		       return EXIT_SUCCESS;
 }
 	    
 void deallocate(){
