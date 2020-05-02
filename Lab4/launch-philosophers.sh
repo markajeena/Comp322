@@ -3,9 +3,10 @@
 EXEC = dining-p
 seats = $1
 child = $!
+position = $2
 pid = ()
 
-if [ $1 -gt 2 ];
+if [ $# -gt 2 ];
 then
 echo "Error: input less arguments";
 exit 1;
