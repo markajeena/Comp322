@@ -15,8 +15,8 @@ Comp322
 #include <sys/mman.h>
 #include <signal.h>
 
-#define chop1  //"chopstick1"
-#define chop2  //"chopstick2"
+#define CHOP1  //"chopstick1"
+#define CHOP2  //"chopstick2"
 sem_t* right;
 sem_t* left;
 
@@ -57,8 +57,8 @@ void deallocate(){
 	sem_close(right);
 	sem_close(left);
 	//unlink
-	sem_unlink(chop1);
-	sem_unlink(chop2);
+	sem_unlink(CHOP1);
+	sem_unlink(CHOP2);
 	//deallocate both side
 	sem_destroy(left);
 	sem_destroy(right);
@@ -74,8 +74,8 @@ void dining(int argc, char **argv){
          }else{
 		int cycle = 0;
 		signal(SIGTERM, signalHandler);
-		right = sem_open(chop1, O_CREAT,0660, 1);
-		left = sem_open(chop2, O_CREAT,0660, 1);
+		right = sem_open(CHOP1, O_CREAT,0660, 1);
+		left = sem_open(CHOP2, O_CREAT,0660, 1);
 			do{
 		//wait for right & left semaphore
 			sem_wait(right);
@@ -103,13 +103,4 @@ void dining(int argc, char **argv){
 int main (int argc, char **argv) {
 	dining(argc,argv);
 	return EXIT_SUCCESS;
-  /*returnVal = sem_open(SEM_FILE1, O_CREAT|O_EXCL, 0666, 1);
-  if (returnVal == SEM_FAILED ) {
-    perror(NULL);
-    returnVal = sem_open(SEM_FILE1, 0);
-  }
-  chopstick[1] = returnVal;
-  sleep(1);
-  sem_unlink(SEM_FILE1);
-  */
 }
