@@ -20,7 +20,7 @@ Comp322
 sem_t* right;
 sem_t* left;
 
-void dining(int argc, char** argv);
+void dining(int argc, char **argv);
 void eat(int num);
 void think(int num);
 
@@ -78,7 +78,7 @@ void deallocate(){
 }
 
 
-void dining(int argc, char** argv){
+void dining(int argc, char **argv){
     if(argc == 3) {
         int seats = atoi(argv[1]);
         int position = atoi(argv[2]);
