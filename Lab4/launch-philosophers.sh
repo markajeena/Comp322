@@ -40,6 +40,8 @@ do
 
 #for every pid for child
 	pid[${i}]=$! 
+fi
+
 cycle=1
 while [ ${cycle} -le ${position} ] ; do
       ${program} ${seats} ${cycle} &
