@@ -42,6 +42,7 @@ void think(int num){
 
 int main (int argc, char **argv) {
 	dining(argc,argv);
+	return EXIT_SUCCESS;
   /*returnVal = sem_open(SEM_FILE1, O_CREAT|O_EXCL, 0666, 1);
   if (returnVal == SEM_FAILED ) {
     perror(NULL);
