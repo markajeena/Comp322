@@ -11,3 +11,7 @@ added print message to both eat and think message
 04/30/2020
 
 Added many things I feel like im 85% done with just have to fix errors. I added signal handler and dining methods. Dining does many things, it has two statements that if they get inflicted they do specific things to position and seats, and if the other is invoked it works with cycles then completes the philosophers dinner. 
+
+05/01/2020  
+
+solved errors with dining method, fixing signal Handler
