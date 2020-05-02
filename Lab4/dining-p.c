@@ -50,8 +50,8 @@ int main (int argc, char **argv) {
 void signalHandler(int num){
 	printf("SIGTERM(%d) processed\n", num);
 	end = 1;
- //sem_close(chop1); 
- //sem_unlink(right); 
+ //sem_close(chop1);
+ //sem_unlink(right);
 }
 
 void dining(int argc, char** argv){
@@ -68,27 +68,28 @@ void dining(int argc, char** argv){
 			do{
 		//wait for right & left semaphore
 			sem_wait(right);
-			sem_wait(left);	
+			sem_wait(left);
 			eat(position);
 		//show left & right are available
 			sem_post(right);
-			sem_post(left);		
+			sem_post(left);
 			think(position);
 			cycle++;
 			}while(end == signalHandler());
-		 if(sigHandler() != 1)
+		 if(sigHandler() != 1){
 			  fprintf(stderr,"Philosopher #%d completed %d cycles.\n", position, cycle);
 		 }
-	 
+
 		 deallocate();
 	 }
 	 }else{
 		printf("Error\n");
 	 }
+	 return EXIT_SUCCESS;
     }
-		       return EXIT_SUCCESS;
-}
-	    
+		       
+
+
 void deallocate(){
 	//close right and left
 	sem_close(right);
