@@ -1,10 +1,10 @@
 
 
-EXEC = dining-p
-seats = $1
-child = $!
-position = $2
-pid = ()
+EXEC=dining-p
+seats=$1
+child=$!
+position=$2
+pid=()
 
 if [ $# -gt 2 ];
 then
@@ -40,4 +40,9 @@ do
 
 #for every pid for child
 	pid[${i}]=$! 
+cycle=1
+while [ ${cycle} -le ${position} ] ; do
+      ${program} ${seats} ${cycle} &
+      echo "Philosopher #${cycle}'s PID is" $!
+      cycle=$(( $cycle + 1 ))
 done
