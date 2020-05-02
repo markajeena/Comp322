@@ -62,7 +62,7 @@ void dining(int argc, char** argv){
           	  printf("Error: not enough seats\n");
          }else{
 		int cycle = 0;
-		signal(SIGTERM, sigHandler);
+		signal(SIGTERM, signalHandler);
 		right = sem_open(chop1, O_CREAT,0660, 1);
 		left = sem_open(chop2, O_CREAT,0660, 1);
 			do{
@@ -75,7 +75,7 @@ void dining(int argc, char** argv){
 			sem_post(left);		
 			think(position);
 			cycle++;
-			}while(end == sigHandler());
+			}while(end == signalHandler());
 		 if(sigHandler() != 1)
 			  fprintf(stderr,"Philosopher #%d completed %d cycles.\n", position, cycle);
 		 }
