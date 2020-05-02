@@ -83,7 +83,7 @@ void dining(int argc, char** argv){
 			think(position);
 			cycle++;
 			}while(end == signalHandler);
-		 if(sigHandler != 1){
+		 if(signalHandler != 1){
 			  fprintf(stderr,"Philosopher #%d completed %d cycles.\n", position, cycle);
 		 }
 
@@ -92,7 +92,7 @@ void dining(int argc, char** argv){
 	 }else{
 		printf("Error\n");
 	 }
-	 return EXIT_SUCCESS;
+	 return 0;
     }
 		       
 
