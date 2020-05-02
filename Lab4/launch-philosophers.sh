@@ -1,4 +1,7 @@
-
+#Mark Ajina
+#Lab4: Rice Rice and Rice
+#this is a bash script for launch-philosophers, that simulates
+#a solution for the dining philosopher problem
 
 program=./dining-p
 seats=$1
