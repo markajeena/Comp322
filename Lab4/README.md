@@ -23,3 +23,4 @@ good news solved Signal handler issues, bad news closing semaphores became a pro
 
 05/02/2020 Pulling an all-nighter better be worth it
 
+Its Working!!! somewhat. Going to do the bash script now.(6:05am).
