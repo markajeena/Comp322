@@ -53,12 +53,16 @@ int main (int argc, char **argv) {
   */
 }
 
-void signalHandler(int num){
-	signal(SIGTERM, num);
-	printf("SIGTERM(%d) processed\n", num);
+int endValue(){
 	end = 1;
- //sem_close(chop1);
- //sem_unlink(right);
+}
+
+int getEnd(){
+	return end;
+}
+
+void signalHandler(){
+	endValue();	
 }
 
 void dining(int argc, char** argv){
@@ -82,15 +86,15 @@ void dining(int argc, char** argv){
 			sem_post(left);
 			think(position);
 			cycle++;
-			}while(end == signalHandler);
-		 if(signalHandler != 1){
+			}while(getEnd());
+		 if(getEnd() != 1){// print complete status in stderr
 			  fprintf(stderr,"Philosopher #%d completed %d cycles.\n", position, cycle);
 		 }
 
 		 deallocate();
 	 }
-	 }else{
-		printf("Error\n");
+	 }else{//print error to stdout
+		fprintf(stdout,"Error: please give more numbers for seats and position\n");
 	 }
 	 return 0;
     }
