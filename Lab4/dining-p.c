@@ -54,6 +54,7 @@ int main (int argc, char **argv) {
 }
 
 void signalHandler(int num){
+	signal(SIGTERM, num);
 	printf("SIGTERM(%d) processed\n", num);
 	end = 1;
  //sem_close(chop1);
@@ -81,8 +82,8 @@ void dining(int argc, char** argv){
 			sem_post(left);
 			think(position);
 			cycle++;
-			}while(end == signalHandler());
-		 if(sigHandler() != 1){
+			}while(end == signalHandler);
+		 if(sigHandler != 1){
 			  fprintf(stderr,"Philosopher #%d completed %d cycles.\n", position, cycle);
 		 }
 
