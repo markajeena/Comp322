@@ -14,4 +14,4 @@ Added many things I feel like im 85% done with just have to fix errors. I added 
 
 05/01/2020  
 
-solved errors with dining method, fixing signal Handler
+solved errors with dining method, completed the philosophers dinner, still fixing signal Handler, if i cant figure it out I will work on the script of launch-philosopher.
