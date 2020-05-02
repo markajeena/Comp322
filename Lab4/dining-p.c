@@ -40,20 +40,6 @@ void think(int num){
 }
 
 
-int main (int argc, char **argv) {
-	dining(argc,argv);
-	return EXIT_SUCCESS;
-  /*returnVal = sem_open(SEM_FILE1, O_CREAT|O_EXCL, 0666, 1);
-  if (returnVal == SEM_FAILED ) {
-    perror(NULL);
-    returnVal = sem_open(SEM_FILE1, 0);
-  }
-  chopstick[1] = returnVal;
-  sleep(1);
-  sem_unlink(SEM_FILE1);
-  */
-}
-
 int endValue(){
 	end = 1;
 }
@@ -113,3 +99,17 @@ void dining(int argc, char **argv){
 	 return 0;
     }
 		       
+
+int main (int argc, char **argv) {
+	dining(argc,argv);
+	return EXIT_SUCCESS;
+  /*returnVal = sem_open(SEM_FILE1, O_CREAT|O_EXCL, 0666, 1);
+  if (returnVal == SEM_FAILED ) {
+    perror(NULL);
+    returnVal = sem_open(SEM_FILE1, 0);
+  }
+  chopstick[1] = returnVal;
+  sleep(1);
+  sem_unlink(SEM_FILE1);
+  */
+}
