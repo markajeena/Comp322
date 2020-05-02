@@ -20,7 +20,13 @@ Comp322
 sem_t* right;
 sem_t* left;
 
+void dining(int argc, char** argv);
+void eat(int num);
+void think(int num);
+
+
 static int end;
+
 
 void eat(int num){
 	fprintf(stdout, "Philosopher #%d is eating\n", num);
