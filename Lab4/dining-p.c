@@ -83,7 +83,7 @@ void dining(int argc, char** argv){
 		 deallocate();
 	 }
 	 }else{
-		printf("Error\n);
+		printf("Error\n");
 	 }
     }
 		       return EXIT_SUCCESS;
