@@ -20,3 +20,6 @@ solved errors with dining method, completed the philosophers dinner, still fixin
 (8:30pm)
 
 good news solved Signal handler issues, bad news closing semaphores became a problem which gave dining method minor problems. Should finish soon. Hopefully. 
+
+05/02/2020 Pulling an all-nighter better be worth it
+
