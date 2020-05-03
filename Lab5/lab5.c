@@ -1,9 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 
-
-int main(int argc, char** argv){
+int main(int argc, char **argv){
+  const int size = 4096;
+  unsigned int pageNum;
+  unsigned int offset;
+ 
   
   return 0;
   
