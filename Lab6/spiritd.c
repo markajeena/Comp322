@@ -6,7 +6,9 @@
 #include <sys/stat.h>
 
 int main(int argc, char **argv){
+  pid_t ppid,
   
+  ppid = fork();
   
   
   return 0;
