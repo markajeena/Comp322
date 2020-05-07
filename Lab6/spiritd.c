@@ -15,21 +15,23 @@ pid_t dpid; //Daemon
 
 int main(int argc, char **argv){
   pid_t ppid;
-  umask(0);
   ppid = fork();
   int dev_null;
+  struct rlimit rLimitStruct;
   
   if(ppid < 0 || ppid > 0){
     printf("Can't create a process")
     return EXIT_FAILURE;
     
   }else if(ppid == 0){
+    umask(0);
+    printf("Daemon pid : %d\n", getpid());
     setsid();
     int check = chdir("/");
     if(check == -1){
       perror("cant change directories");
       return EXIT_FAILURE;
-    
+    }
     getrlimit(RLIMIT_NOFILE, &rlimit);
         if (rlimit.rlim_max == RLIM_INFINITY)
             rlimit.rlim_max = 1024;
