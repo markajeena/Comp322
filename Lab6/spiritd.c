@@ -21,9 +21,12 @@ void signalHandler(int num){
   //if there is no child process ready to be noticed.
   int mole1 = waitpid(pid1, &mole1, WNOHANG);
   int mole2 = waitpid(pid2, &mole2, WNOHANG);
-  
+  if(mole1 == 0){
     
-    
+  }
+  if(mole2 == 0){
+      
+  }
     
   }
   
