@@ -11,7 +11,25 @@
 
 pid_t pid1;
 pid_t pid2;
-char mole [PATH_MAX];
+char molePath [PATH_MAX];
+
+void signalHandler(int num){
+  signal(num,signalHandler);
+  
+  if(num == SIGTERM){
+  //WNOHANG - specifies that waitpid should return immediately instead of waiting, 
+  //if there is no child process ready to be noticed.
+  int mole1 = waitpid(pid1, &mole1, WNOHANG);
+  int mole2 = waitpid(pid2, &mole2, WNOHANG);
+  
+    
+    
+    
+  }
+  
+  
+}
+
 
 int main(int argc, char **argv){
   pid_t ppid;
