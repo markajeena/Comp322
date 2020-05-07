@@ -15,32 +15,34 @@ char molePath [PATH_MAX];
 
 void signalHandler(int num){
   signal(num,signalHandler);
-  
   if(num == SIGTERM){
   //WNOHANG - specifies that waitpid should return immediately instead of waiting, 
   //if there is no child process ready to be noticed.
   int mole1 = waitpid(pid1, &mole1, WNOHANG);
   int mole2 = waitpid(pid2, &mole2, WNOHANG);
   if(mole1 == 0){
-    
-  }
+    //exit mole pid 1 
+    kill(pid1, SIGKILL);
+    }
   if(mole2 == 0){
-      
-  }
-    
-  }
+    //exit mole pid 2
+      kill(pid2, SIGKILL);
+    }
+    //exit Daemon process
+  kill(getpid(), SIGKILL)
   
+  }
   
 }
 
-
 int main(int argc, char **argv){
   pid_t ppid;
-  ppid = fork();
   int dev_null;
   int log;
   char homeDirectory[PATH_MAX];
   struct rlimit rLimitStruct;
+  
+  ppid = fork();
   
   if(ppid < 0 || ppid > 0){
     printf("Can't create a process")
