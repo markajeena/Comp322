@@ -11,12 +11,14 @@
 
 pid_t pid1;
 pid_t pid2;
-pid_t dpid; //Daemon
+char mole [PATH_MAX];
 
 int main(int argc, char **argv){
   pid_t ppid;
   ppid = fork();
   int dev_null;
+  int log;
+  char homeDirectory[PATH_MAX];
   struct rlimit rLimitStruct;
   
   if(ppid < 0 || ppid > 0){
