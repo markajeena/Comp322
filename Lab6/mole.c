@@ -9,7 +9,7 @@ int main(int argc, char **argv){
   FILE* filePointer;
   char lab6;
   
-  fprintf(filePointer, "Pop mole\n", argv[0]);
+  fprintf(filePointer, "Pop mole%s\n", argv[0]);
   fclose(filePointer);
   return 0;
   
