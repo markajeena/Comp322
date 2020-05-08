@@ -12,6 +12,14 @@
 pid_t pid1;
 pid_t pid2;
 char molePath [PATH_MAX];
+int dev_null;
+int log;
+char homeDirectory[PATH_MAX];
+
+
+void srand(unsigned int seed){
+	next = seed;
+}
 
 void signalHandler(int num){
   signal(num,signalHandler);
@@ -31,15 +39,28 @@ void signalHandler(int num){
     //exit Daemon process
   kill(getpid(), SIGKILL)
   
+  }else if(num == SIGUSR1){
+  int mole1 = waitpid(pid1, &mole1, WNOHANG);
+    if(mole1 == 0){
+      kill(pid1, SIGKILL);
+    }
+  }else if(num == SIGUSR2){
+    int mole2 = waitpid(pid2, &mole2, WNOHANG);
+   if(mole2 == 0){
+    kill(pid2,SIGKILL); 
+   }
   }
+  
+}
+
+void moleMaker(){
+  char* mole;
   
 }
 
 int main(int argc, char **argv){
   pid_t ppid;
-  int dev_null;
-  int log;
-  char homeDirectory[PATH_MAX];
+
   struct rlimit rLimitStruct;
   
   ppid = fork();
