@@ -1,3 +1,7 @@
+#Mark Ajina
+#05/08/2020
+#Lab 6: Wack A Mole
+
 EXECUTABLES = spiritd moles
 
 FILE_1 = spiritd
