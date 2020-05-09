@@ -11,8 +11,6 @@
 
 pid_t pid1;
 pid_t pid2;
-//char molePath [PATH_MAX];
-int dev_null;
 char* moleDirectory;
 
 
@@ -91,25 +89,26 @@ void moleMaker(){
 int main(int argc, char **argv){
   pid_t ppid;
   char homeD;
+  int dev_null;
   struct rlimit rLimitStruct;
   ppid = fork();
-  
+  //check if parent pid > 0, if so fork() and term
   if(ppid > 0){
-    printf("Can't create a process\n");
-    return EXIT_FAILURE;
-    
+    exit(0);
   }else if(ppid == 0){
     umask(0);
     //catch signals
     signal(SIGUSR1, signalHandler);
     signal(SIGUSR2, signalHandler);
     signal(SIGTERM, signalHandler);
-    //
+    //create a buffer and set mole pathing to buffer and max size of 4096
 	char buff[4096];
     moleDirectory = getcwd(buff, 4096);
     strcat(moleDirectory, "/mole");
     printf("Daemon pid : %d\n", getpid());
+    //create a new session
     setsid();
+    //check directory
     int check = chdir("/");
     strcat(homeD, getenv("HOME"));
     strcat(homeD, "/lab6.log");
@@ -118,12 +117,14 @@ int main(int argc, char **argv){
       perror("cant change directories\n");
       return EXIT_FAILURE;
     }
+    //open all files and close them
     getrlimit(RLIMIT_NOFILE, &rLimitStruct);
         if(rLimitStruct.rlim_max == RLIM_INFINITY)
             rLimitStruct.rlim_max = 1024;
         for (unsigned int i = 0; i < rLimitStruct.rlim_max; i++)
             close(i);
-        dev_null = open("/dev/null", O_RDONLY);
+    //maps all I/O to dev
+        dev_null = open("/dev/null", O_RWDR);
         dup2(dev_null,0);
         dup2(dev_null,1);
         dup2(dev_null,2);
