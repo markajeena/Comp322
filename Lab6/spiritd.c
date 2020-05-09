@@ -71,7 +71,7 @@ void moleMaker(){
 		args[0] = moleDirectory;
 		args[1] = mole;
 		args[2] = NULL;
-		exceve(args[0], args);
+		execv(args[0], args);
 	}else {
 		//fork pid2 and set mole to 2
 		pid2 = fork();
@@ -79,7 +79,7 @@ void moleMaker(){
 		args[0] = moleDirectory;
 		args[1] = mole;
 		args[2] = NULL;
-		exceve(args[0], args);
+		execv(args[0], args);
 	}
 	
 }
