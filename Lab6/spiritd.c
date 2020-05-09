@@ -67,7 +67,6 @@ int main(int argc, char **argv){
   pid_t ppid;
 
   struct rlimit rLimitStruct;
-  
   ppid = fork();
   
   if(ppid < 0 || ppid > 0){
@@ -76,11 +75,16 @@ int main(int argc, char **argv){
     
   }else if(ppid == 0){
     umask(0);
+    //catch signals
+    signal(SIGUSR1, signalHandler);
+    signal(SIGUSR2, signalHandler);
+    signal(SIGTERM, signalHandler);
+    //
     printf("Daemon pid : %d\n", getpid());
     setsid();
     int check = chdir("/");
     if(check == -1){
-      perror("cant change directories");
+      perror("cant change directories\n");
       return EXIT_FAILURE;
     }
     getrlimit(RLIMIT_NOFILE, &rLimitStruct);
