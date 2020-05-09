@@ -22,40 +22,50 @@ void srand(unsigned int seed){
 }
 
 void signalHandler(int num){
+//reregister signal
   signal(num,signalHandler);
+int mole1, mole2;
+//sig equal terminate then kills both moles
   if(num == SIGTERM){
   //WNOHANG - specifies that waitpid should return immediately instead of waiting, 
   //if there is no child process ready to be noticed.
-  int mole1 = waitpid(pid1, &mole1, WNOHANG);
-  int mole2 = waitpid(pid2, &mole2, WNOHANG);
-  if(mole1 == 0){
-    //exit mole pid 1 
-    kill(pid1, SIGKILL);
-    }
-  if(mole2 == 0){
-    //exit mole pid 2
-      kill(pid2, SIGKILL);
-    }
-    //exit Daemon process
-  kill(getpid(), SIGKILL)
+  	mole1 = waitpid(pid1, &mole1, WNOHANG);
+  	mole2 = waitpid(pid2, &mole2, WNOHANG);
+  	if(mole1 == 0){
+   	 //exit mole pid 1 
+    	kill(pid1, SIGKILL);
+   	 }
+	  if(mole2 == 0){
+   	 //exit mole pid 2
+     	 kill(pid2, SIGKILL);
+   	 }
+   	 //exit Daemon process
+  	kill(getpid(), SIGKILL)
   
+   //if signal = usr1 then init mole1 only
   }else if(num == SIGUSR1){
-  int mole1 = waitpid(pid1, &mole1, WNOHANG);
-    if(mole1 == 0){
-      kill(pid1, SIGKILL);
-    }
+  mole1 = waitpid(pid1, &mole1, WNOHANG);
+   	//if mole1 = has no processes then kill	  
+   	 if(mole1 == 0){
+     	 kill(pid1, SIGKILL);
+    	}
+	  
+   //if sig = usr2 then init mole2 only	  
   }else if(num == SIGUSR2){
-    int mole2 = waitpid(pid2, &mole2, WNOHANG);
-   if(mole2 == 0){
-    kill(pid2,SIGKILL); 
-   }
+   mole2 = waitpid(pid2, &mole2, WNOHANG);
+	//if mole2 = no processes then kill
+   	if(mole2 == 0){
+    	kill(pid2,SIGKILL); 
+	   
+   	}
+	  
   }
   
 }
 
 void moleMaker(){
   char* mole;
-  
+  srand(time(0));//less likely to get the same random number
 }
 
 int main(int argc, char **argv){
