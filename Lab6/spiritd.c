@@ -84,9 +84,9 @@ int main(int argc, char **argv){
       return EXIT_FAILURE;
     }
     getrlimit(RLIMIT_NOFILE, &rLimitStruct);
-        if(rlimit.rlim_max == RLIM_INFINITY)
-            rlimit.rlim_max = 1024;
-        for (unsigned int i = 0; i < rlimit.rlim_max; i++)
+        if(rLimitStruct.rlim_max == RLIM_INFINITY)
+            rLimitStruct.rlim_max = 1024;
+        for (unsigned int i = 0; i < rLimitStruct.rlim_max; i++)
             close(i);
         dev_null = open("/dev/null", O_RDONLY);
         dup2(dev_null,0);
