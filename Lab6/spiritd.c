@@ -35,7 +35,7 @@ int mole1, mole2;
      	 kill(pid2, SIGKILL);
    	 }
    	 //exit Daemon process
-  	kill(getpid(), SIGKILL)
+  	kill(getpid(), SIGKILL);
   
    //if signal = usr1 then init mole1 only
   }else if(num == SIGUSR1){
@@ -71,7 +71,7 @@ int main(int argc, char **argv){
   ppid = fork();
   
   if(ppid < 0 || ppid > 0){
-    printf("Can't create a process")
+    printf("Can't create a process");
     return EXIT_FAILURE;
     
   }else if(ppid == 0){
@@ -84,7 +84,7 @@ int main(int argc, char **argv){
       return EXIT_FAILURE;
     }
     getrlimit(RLIMIT_NOFILE, &rlimit);
-        if (rlimit.rlim_max == RLIM_INFINITY)
+        if(rlimit.rlim_max == RLIM_INFINITY)
             rlimit.rlim_max = 1024;
         for (unsigned int i = 0; i < rlimit.rlim_max; i++)
             close(i);
@@ -94,7 +94,6 @@ int main(int argc, char **argv){
         dup2(dev_null,2);
      }
   
-  }  
   return 0;
   
 }
