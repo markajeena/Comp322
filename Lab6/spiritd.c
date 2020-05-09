@@ -15,6 +15,13 @@ char molePath [PATH_MAX];
 int dev_null;
 int log;
 char homeDirectory[PATH_MAX];
+static unsigned int next;
+
+
+void srand(unsigned int seed){
+	next = seed;
+}
+
 
 void signalHandler(int num){
 //reregister signal
@@ -61,6 +68,7 @@ int mole1, mole2;
 void moleMaker(){
   char* mole;
   srand(time(0));//less likely to get the same random number
+  srand((RAND_MAX)%2);
 }
 
 int main(int argc, char **argv){
