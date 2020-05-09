@@ -18,11 +18,6 @@ char homeDirectory[PATH_MAX];
 static unsigned int next;
 
 
-void srand(unsigned int seed){
-	next = seed;
-}
-
-
 void signalHandler(int num){
 //reregister signal
   signal(num,signalHandler);
@@ -66,9 +61,20 @@ int mole1, mole2;
 }
 
 void moleMaker(){
-  char* mole;
-  srand(time(0));//less likely to get the same random number
-  srand((RAND_MAX)%2);
+	  char* mole;
+	  srand(time(0));//less likely to get the same random number
+	  int rando = (rand()%2);
+	if(rando == 1){
+		//fork pid1 and set mole to 1
+		pid1 = fork();	
+		mole = '1';
+		
+	}else {
+		//fork pid2 and set mole to 2
+		pid2 = fork();
+		mole = '2';
+	}
+	
 }
 
 int main(int argc, char **argv){
@@ -77,7 +83,7 @@ int main(int argc, char **argv){
   struct rlimit rLimitStruct;
   ppid = fork();
   
-  if(ppid < 0 || ppid > 0){
+  if(ppid > 0){
     printf("Can't create a process\n");
     return EXIT_FAILURE;
     
