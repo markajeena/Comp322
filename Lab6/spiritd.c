@@ -15,7 +15,6 @@ char molePath [PATH_MAX];
 int dev_null;
 int log;
 char* moleDirectory;
-static unsigned int next;
 
 
 void signalHandler(int num){
@@ -68,7 +67,7 @@ void moleMaker(){
 	if(rando == 1){
 		//fork pid1 and set mole to 1
 		pid1 = fork();	
-		mole = '1';
+		mole = "1";
 		args[0] = moleDirectory;
 		args[1] = mole;
 		args[2] = NULL;
@@ -76,7 +75,7 @@ void moleMaker(){
 	}else {
 		//fork pid2 and set mole to 2
 		pid2 = fork();
-		mole = '2';
+		mole = "2";
 		args[0] = moleDirectory;
 		args[1] = mole;
 		args[2] = NULL;
