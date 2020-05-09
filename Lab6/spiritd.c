@@ -83,7 +83,7 @@ int main(int argc, char **argv){
       perror("cant change directories");
       return EXIT_FAILURE;
     }
-    getrlimit(RLIMIT_NOFILE, &rlimit);
+    getrlimit(RLIMIT_NOFILE, &rlimitStruct);
         if(rlimit.rlim_max == RLIM_INFINITY)
             rlimit.rlim_max = 1024;
         for (unsigned int i = 0; i < rlimit.rlim_max; i++)
