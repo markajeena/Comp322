@@ -70,7 +70,7 @@ int main(int argc, char **argv){
   ppid = fork();
   
   if(ppid < 0 || ppid > 0){
-    printf("Can't create a process");
+    printf("Can't create a process\n");
     return EXIT_FAILURE;
     
   }else if(ppid == 0){
