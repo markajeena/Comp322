@@ -14,7 +14,7 @@ pid_t pid2;
 char molePath [PATH_MAX];
 int dev_null;
 int log;
-char homeDirectory[PATH_MAX];
+char* moleDirectory;
 static unsigned int next;
 
 
@@ -64,15 +64,23 @@ void moleMaker(){
 	  char* mole;
 	  srand(time(0));//less likely to get the same random number
 	  int rando = (rand()%2);
+	char args[3];
 	if(rando == 1){
 		//fork pid1 and set mole to 1
 		pid1 = fork();	
 		mole = '1';
-		
+		args[0] = moleDirectory;
+		args[1] = mole;
+		args[2] = NULL;
+		exceve(args[0], args);
 	}else {
 		//fork pid2 and set mole to 2
 		pid2 = fork();
 		mole = '2';
+		args[0] = moleDirectory;
+		args[1] = mole;
+		args[2] = NULL;
+		exceve(args[0], args);
 	}
 	
 }
