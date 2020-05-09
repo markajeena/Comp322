@@ -41,22 +41,27 @@ int mole1, mole2;
    //if signal = usr1 then init mole1 only
   }else if(num == SIGUSR1){
   mole1 = waitpid(pid1, &mole1, WNOHANG);
+  mole2 = waitpid(pid2, &mole2, WNOHANG);
    	//if mole1 = has no processes then kill	  
    	 if(mole1 == 0){
      	 kill(pid1, SIGKILL);
     	}
-	  
+	  else if(mole2 == 0){
+	 return;
+	}
+	  moleMaker();
    //if sig = usr2 then init mole2 only	  
   }else if(num == SIGUSR2){
    mole2 = waitpid(pid2, &mole2, WNOHANG);
+   mole1 = waitpid(pid1, &mole1, WNOHANG);
 	//if mole2 = no processes then kill
    	if(mole2 == 0){
     	kill(pid2,SIGKILL); 
 	   
-   	}
-	  
+   	}else if(mole2 == 0)
+	  return;
   }
-  
+  	moleMaker();
 }
 
 void moleMaker(){
