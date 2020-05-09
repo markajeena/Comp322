@@ -11,9 +11,8 @@
 
 pid_t pid1;
 pid_t pid2;
-char molePath [PATH_MAX];
+//char molePath [PATH_MAX];
 int dev_null;
-int log;
 char* moleDirectory;
 
 
@@ -91,7 +90,7 @@ void moleMaker(){
 
 int main(int argc, char **argv){
   pid_t ppid;
-
+  char homeD;
   struct rlimit rLimitStruct;
   ppid = fork();
   
@@ -106,10 +105,16 @@ int main(int argc, char **argv){
     signal(SIGUSR2, signalHandler);
     signal(SIGTERM, signalHandler);
     //
+	char buff[4096];
+    moleDirectory = getcwd(buff, 4096);
+    strcat(moleDirectory, "/mole");
     printf("Daemon pid : %d\n", getpid());
     setsid();
     int check = chdir("/");
-    if(check == -1){
+    strcat(homeD, getenv("HOME"));
+    strcat(homeD, "/lab6.log");
+    int log = open(homeD, O_CREAT, 0770);
+    if(log == -1){
       perror("cant change directories\n");
       return EXIT_FAILURE;
     }
@@ -122,7 +127,13 @@ int main(int argc, char **argv){
         dup2(dev_null,0);
         dup2(dev_null,1);
         dup2(dev_null,2);
+	  while(1){
+	  //waits for termination
+	  pause();
+	  }
+	  
      }
+	  
   
   return 0;
   
