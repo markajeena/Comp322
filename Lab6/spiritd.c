@@ -16,11 +16,6 @@ int dev_null;
 int log;
 char homeDirectory[PATH_MAX];
 
-
-void srand(unsigned int seed){
-	next = seed;
-}
-
 void signalHandler(int num){
 //reregister signal
   signal(num,signalHandler);
