@@ -21,4 +21,7 @@ the pathing is correct because as I write this it gives me wrong location of whe
 
 05/09/2020
 
-Finishing up spiritd, finished mole.c and creates a log in /HOME/markajeena/lab6.log. 
+Finishing up spiritd, finished mole.c and it beautifully creates a log in /HOME/markajeena/lab6.log. 
+
+05/09/2020
+-finished at 3:00pm
