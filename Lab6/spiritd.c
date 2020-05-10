@@ -9,6 +9,9 @@
 #include <syslog.h>
 #include <limits.h>
 
+void signaHandler();
+void moleMaker();
+
 pid_t pid1;
 pid_t pid2;
 char* moleDirectory;
